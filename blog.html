@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-9">
+            {% if request.args %}
+            <h2 align="center" font-weight="Strong" >
+                {{blog.title}}
+            </h2>
+            <p>
+                {{blog.body}}
+            </p> 
+    
+            {% elif blog_query|length == 0 %}
+        
+        <p>Go add a blog post!</p>
+
+            {% else %}
+            {% for blog in blog_query %}
+
+            <h2><a href='/?id={{blog.id}}'>{{blog.title}}</a></h2>
+            <br>
+            <p>{{blog.body}}</p>
+            <br>
+            <hr />
+            
+
+        {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %} 
